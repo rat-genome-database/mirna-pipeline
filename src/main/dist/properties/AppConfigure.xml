@@ -1,0 +1,60 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="manager" class="edu.mcw.rgd.miRnaManager">
+        <property name="version" value="--miRna Import pipeline -- ver. 1.0.12-- Sep 25, 2018 --" />
+        <property name="speciesProcessed">
+            <list>
+                <value>rat</value>
+                <value>mouse</value>
+                <value>human</value>
+            </list>
+        </property>
+        <property name="mirbaseGenomeFile">
+            <list>
+                <value> </value>
+                <value>ftp://mirbase.org/pub/mirbase/CURRENT/genomes/hsa.gff3</value>
+                <value>ftp://mirbase.org/pub/mirbase/CURRENT/genomes/mmu.gff3</value>
+                <value>ftp://mirbase.org/pub/mirbase/CURRENT/genomes/rno.gff3</value>
+            </list>
+        </property>
+        <property name="mirgateUriConfirmed">
+            <list>
+                <value> </value>
+                <value>http://mirgate.bioinfo.cnio.es/ResT/API/human/miRNA_confirmed/</value>
+                <value>http://mirgate.bioinfo.cnio.es/ResT/API/mouse/miRNA_confirmed/</value>
+                <value>http://mirgate.bioinfo.cnio.es/ResT/API/rat/miRNA_confirmed/</value>
+            </list>
+        </property>
+        <property name="mirgateUriPredicted">
+            <list>
+                <value> </value>
+                <value>http://mirgate.bioinfo.cnio.es/ResT/API/human/miRNA_predictions/</value>
+                <value>http://mirgate.bioinfo.cnio.es/ResT/API/mouse/miRNA_predictions/</value>
+                <value>http://mirgate.bioinfo.cnio.es/ResT/API/rat/miRNA_predictions/</value>
+            </list>
+        </property>
+
+        <property name="fdThreadCount" value="3" />
+        <property name="ppThreadCount" value="22" />
+        <property name="qcdbThreadCount" value="4" />
+        <property name="qcThreadCount" value="18" />
+        <property name="ldThreadCount" value="1" />
+        <property name="queueSize" value="350" /><!-- 0: unlimited; set it to low number if little JVM memory, f.e. 50 -->
+        <!-- nr of downloaded files that are broken and that should be reprocessed -->
+        <property name="maxFailedFiles" value="50" />
+        <!-- percent of stale data that may be deleted; if stale data exceeds that threshold, nothing is deleted -->
+        <property name="staleDataDeleteThreshold" value="10" />
+    </bean>
+
+    <bean id="statLoader" class="edu.mcw.rgd.miRnaStatLoader">
+        <property name="version" value="--miRna Stat Loader pipeline -- ver. 1.0.0 -- Aug 16, 2016 --" />
+        <property name="speciesProcessed">
+            <list>
+                <value>rat</value>
+                <value>mouse</value>
+                <value>human</value>
+            </list>
+        </property>
+    </bean>
+</beans>

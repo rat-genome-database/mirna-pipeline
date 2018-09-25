@@ -1,0 +1,48 @@
+ver 1.0.12, Sep 25, 2018
+  -moved from subversion to github and gradle
+
+ver 1.0.11, Aug 24, 2016
+  -parser: confirmed data: fixed parsing of HGNC and EnsEMBL fields -- per RGDD-1261
+
+ver 1.0.0, Aug 16, 2016
+  -statLoader: first working version deployed
+
+ver 1.0.10, Aug 12, 2016
+  -QC: updated rgdcore.jar, which had updated equality comparison code: 'energy' field is no longer
+    being used in comparisons, because 'energy' field is no longer present in the incoming data;
+    this should 1) preserve the existing historical energy values
+                2)prevent dropping and reloading all of the data we have in MIRNA_TARGETS table
+  -statsLoader: very preliminary code
+
+ver 1.0.9, Aug 11, 2016
+  -DL: stale data handling: 5% threshold to trigger stale data deletion could be configured
+    in the app properties file
+
+ver 1.0.8, Aug 8, 2016
+  -parser: predicted data: allowed handling of data with missing 'energy','id','score','normalized_score' fields
+    (previously that fields were mandatory)
+  -QC: stale data handling: enforced a rule that prevents deleting any data
+    if more than 5% of data is subject to deletion
+
+ver 1.0.7, Sep 23, 2015
+  -optimized QC processing by better utilizing the available cores
+  -greatly optimized code reducing total running time from 3 days to few hours
+
+ver 1.0.6, July 1, 2015
+  -greatly improved robustness when handling unparsable files (f.e. partially downloaded)
+   all unparsable files will be downloaded again and reparsed automatically (maximum 1000 attempts will be made)
+
+ver 1.0.5, June 29, 2015
+  -when processing zero length files, an attempt is always made to download them
+   (previously the file was attempted to be loaded only once per quarter)
+  -increased timeout when waiting for the remote server to respond from 20sec to 5 min
+
+ver 1.0.4, June 1, 2015
+  -improved reporting
+
+ver 1.0.3, May 26, 2015
+  -improved logging
+
+ver 1.0.2, May 14, 2015
+  -download mirbase genomes for rat, mouse and human
+  -download mirgate data for every MI ids, parse them and load into RGD table mirna_targets
