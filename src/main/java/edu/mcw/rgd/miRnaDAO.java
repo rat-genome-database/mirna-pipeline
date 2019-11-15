@@ -3,26 +3,22 @@ package edu.mcw.rgd;
 import edu.mcw.rgd.dao.impl.GeneDAO;
 import edu.mcw.rgd.dao.impl.MiRnaTargetDAO;
 import edu.mcw.rgd.dao.impl.XdbIdDAO;
-import edu.mcw.rgd.dao.spring.MiRnaTargetStatQuery;
 import edu.mcw.rgd.datamodel.*;
 import edu.mcw.rgd.process.Utils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 
 import java.util.*;
 import java.util.Map;
 
 /**
- * User: mtutaj
- * Date: 9/3/13
- * Time: 10:33 AM
- * <p>
+ * @author mtutaj
+ * @since 9/3/13
  * wrapper to handle all miRnaDAO code
  */
 public class miRnaDAO {
 
-    Log logInserted = LogFactory.getLog("insertedIds");
-    Log logDeleted = LogFactory.getLog("deletedIds");
+    Logger logInserted = Logger.getLogger("insertedIds");
+    Logger logDeleted = Logger.getLogger("deletedIds");
 
     MiRnaTargetDAO mdao = new MiRnaTargetDAO();
     XdbIdDAO xdao = new XdbIdDAO();
@@ -38,7 +34,7 @@ public class miRnaDAO {
 
     static public void initCaches(int speciesTypeKey) throws Exception {
 
-        Log logCore = LogFactory.getLog("core");
+        Logger logCore = Logger.getLogger("core");
         logCore.info("  initializing symbol-to-gene cache ...");
         List<Gene> genes = new GeneDAO().getActiveGenes(speciesTypeKey);
         for (Gene gene : genes) {
@@ -62,7 +58,7 @@ public class miRnaDAO {
     static Set<String> _multis = new HashSet<>();
 
     public int printMultis() {
-        Log log = LogFactory.getLog("multis");
+        Logger log = Logger.getLogger("multis");
         for (String msg : _multis) {
             log.info(msg);
         }

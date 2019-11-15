@@ -4,8 +4,7 @@ import edu.mcw.rgd.datamodel.SpeciesType;
 import edu.mcw.rgd.pipelines.RecordPreprocessor;
 import edu.mcw.rgd.process.FileDownloader;
 import edu.mcw.rgd.process.Utils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -15,16 +14,13 @@ import java.util.*;
 import java.util.zip.GZIPInputStream;
 
 /**
- * Created by IntelliJ IDEA.
- * User: mtutaj
- * Date: 5/14/15
- * Time: 2:45 PM
- * <p>
+ * @author mtutaj
+ * @since 5/14/15
  * download a file from mirbase to get all mirbase ids for given species
  */
 public class miRnaMirBaseParser extends RecordPreprocessor {
 
-    Log log = LogFactory.getLog("core");
+    Logger log = Logger.getLogger("core");
 
     private String mirBaseGenomeFile;
     private int speciesTypeKey;

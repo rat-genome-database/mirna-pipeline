@@ -1,3 +1,6 @@
+Nov 15, 2019
+  -logging changed to log4j
+
 ver 1.0.12, Sep 25, 2018
   -moved from subversion to github and gradle
 

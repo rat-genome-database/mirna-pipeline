@@ -4,21 +4,18 @@ import edu.mcw.rgd.datamodel.MiRnaTarget;
 import edu.mcw.rgd.pipelines.PipelineRecord;
 import edu.mcw.rgd.pipelines.RecordProcessor;
 import edu.mcw.rgd.process.Utils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: mtutaj
- * Date: 5/4/15
- * Time: 12:14 PM
+ * @author mtutaj
+ * @since 5/4/15
  */
 public class miRnaDataLoad extends RecordProcessor {
 
-    Log log = LogFactory.getLog("core");
+    Logger log = Logger.getLogger("core");
 
     private miRnaDAO dao;
 

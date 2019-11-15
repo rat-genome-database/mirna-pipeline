@@ -2,7 +2,7 @@
 
 <beans>
     <bean id="manager" class="edu.mcw.rgd.miRnaManager">
-        <property name="version" value="--miRna Import pipeline -- ver. 1.0.12-- Sep 25, 2018 --" />
+        <property name="version" value="miRna Import pipeline   -- build Nov 15, 2019" />
         <property name="speciesProcessed">
             <list>
                 <value>rat</value>
@@ -48,7 +48,7 @@
     </bean>
 
     <bean id="statLoader" class="edu.mcw.rgd.miRnaStatLoader">
-        <property name="version" value="--miRna Stat Loader pipeline -- ver. 1.0.0 -- Aug 16, 2016 --" />
+        <property name="version" value="miRna Stat Loader pipeline   -- build Nov 15, 2019" />
         <property name="speciesProcessed">
             <list>
                 <value>rat</value>

@@ -3,21 +3,17 @@ package edu.mcw.rgd;
 import edu.mcw.rgd.pipelines.PipelineRecord;
 import edu.mcw.rgd.pipelines.RecordProcessor;
 import edu.mcw.rgd.process.Utils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 
 /**
- * Created by IntelliJ IDEA.
- * User: mtutaj
- * Date: 9/22/15
- * Time: 4:11 PM
- * <p>
+ * @author mtutaj
+ * @since 9/22/15
  * pre-qc of a single record identified by a unique MI (mirbase) id:
  * all information needed by QC from database is loaded here
  */
 public class miRnaQCDb extends RecordProcessor {
 
-    Log log = LogFactory.getLog("core");
+    Logger log = Logger.getLogger("core");
 
     private int speciesTypeKey;
     private miRnaDAO dao;

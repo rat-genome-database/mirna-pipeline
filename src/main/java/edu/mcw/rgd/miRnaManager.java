@@ -4,8 +4,7 @@ import edu.mcw.rgd.datamodel.MiRnaTarget;
 import edu.mcw.rgd.datamodel.SpeciesType;
 import edu.mcw.rgd.pipelines.PipelineManager;
 import edu.mcw.rgd.process.Utils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.core.io.FileSystemResource;
@@ -14,17 +13,15 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: jdepons
- * Date: 4/26/12
- * Time: 12:55 PM
+ * @author jdepons
+ * @since 4/26/12
  */
 public class miRnaManager {
 
     private miRnaDAO dao = new miRnaDAO();
     private String version;
 
-    Log log = LogFactory.getLog("core");
+    Logger log = Logger.getLogger("core");
     private List<String> mirbaseGenomeFile;
     private List<String> mirgateUriConfirmed;
     private List<String> mirgateUriPredicted;

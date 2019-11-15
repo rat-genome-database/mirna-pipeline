@@ -5,11 +5,8 @@ import edu.mcw.rgd.xml.XomAnalyzer;
 import nu.xom.Element;
 
 /**
- * Created by IntelliJ IDEA.
- * User: mtutaj
- * Date: 5/1/15
- * Time: 4:23 PM
- * <p>
+ * @author mtutaj
+ * @since 5/1/15
  * parser for confirmed miRna targets
  */
 public class miRnaConfirmedTargetParser extends XomAnalyzer {

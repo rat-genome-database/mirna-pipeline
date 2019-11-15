@@ -5,23 +5,19 @@ import edu.mcw.rgd.pipelines.PipelineRecord;
 import edu.mcw.rgd.pipelines.RecordProcessor;
 import edu.mcw.rgd.process.FileDownloader;
 import edu.mcw.rgd.process.Utils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.util.*;
 
 /**
- * Created by IntelliJ IDEA.
- * User: mtutaj
- * Date: 5/13/15
- * Time: 10:37 AM
- * <p>
+ * @author mtutaj
+ * @since 5/13/15
  * downloads data from the external website
  */
 public class miRnaDownloader extends RecordProcessor {
 
-    Log log = LogFactory.getLog("core");
+    Logger log = Logger.getLogger("core");
 
     private String uriConfirmed;
     private String uriPredicted;

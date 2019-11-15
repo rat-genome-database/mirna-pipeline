@@ -7,7 +7,6 @@ APPNAME=miRnaPipeline
 APPDIR=/home/rgddata/pipelines/${APPNAME}_on_reed
 cd $APPDIR
 
-DB_OPTS="-Dspring.config=$APPDIR/../properties/reed.xml"
-LOG4J_OPTS="-Dlog4j.configuration=file://$APPDIR/properties/log4j.properties"
-declare -x "MI_RNA_PIPELINE_OPTS=$DB_OPTS $LOG4J_OPTS"
-bin/$APPNAME -Xmx100G --load --stats "$@"
+java -Dspring.config=$APPDIR/../properties/reed.xml \
+    -Dlog4j.configuration=file://$APPDIR/properties/log4j.properties \
+    -jar lib/$APPNAME.jar -Xmx100G --load --stats "$@"

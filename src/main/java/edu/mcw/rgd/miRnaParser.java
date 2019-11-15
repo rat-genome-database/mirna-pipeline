@@ -3,22 +3,18 @@ package edu.mcw.rgd;
 import edu.mcw.rgd.pipelines.PipelineRecord;
 import edu.mcw.rgd.pipelines.RecordProcessor;
 import edu.mcw.rgd.process.Utils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 
 import java.io.File;
 
 /**
- * Created by IntelliJ IDEA.
- * User: mtutaj
- * Date: 5/4/15
- * Time: 12:13 PM
- * <p>
+ * @author mtutaj
+ * @since 5/4/15
  * file parser, for confirmed and predicted miRna targets
  */
 public class miRnaParser extends RecordProcessor {
 
-    Log log = LogFactory.getLog("core");
+    Logger log = Logger.getLogger("core");
 
     int confirmedFilesWithParseError = 0;
     int predictedFilesWithParseError = 0;
@@ -49,7 +45,7 @@ public class miRnaParser extends RecordProcessor {
         log.debug("  PP "+rec.getRecNo()+". "+rec.getIdMI()+" OK!");
     }
 
-    public void printStats(Log log) {
+    public void printStats(Logger log) {
         log.info("CONFIRMED FILES WITH PARSE ERROR "+confirmedFilesWithParseError);
         log.info("PREDICTED FILES WITH PARSE ERROR "+predictedFilesWithParseError);
     }
