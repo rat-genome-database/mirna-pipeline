@@ -7,7 +7,10 @@ import edu.mcw.rgd.process.FileDownloader;
 import edu.mcw.rgd.process.Utils;
 import org.apache.log4j.Logger;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -106,12 +109,41 @@ public class miRnaDownloader extends RecordProcessor {
         }
 
         try {
-            return downloader.downloadNew();
+            String fname = downloader.downloadNew();
+
+            // check if the downloaded file contains "<miRGate>"
+            if( fileLooksValid(fname) ) {
+                return fname;
+            }
+
+            // file does not look valid:
+            // create empty file
+            String localFileName = downloader.getLocalFile();
+            new File(localFileName).createNewFile();
+            // sleep at least 3 secs
+            Thread.sleep(3000);
+            return localFileName;
+
         } catch( FileDownloader.PermanentDownloadErrorException e ) {
             // create empty file
             String localFileName = downloader.getLocalFile();
             new File(localFileName).createNewFile();
             return localFileName;
         }
+    }
+
+    boolean fileLooksValid(String fname) throws IOException {
+
+        // check if the downloaded file contains "<miRGate>"
+        BufferedReader in = Utils.openReader(fname);
+        String line;
+        while( (line=in.readLine())!=null ) {
+            if( line.contains("<miRGate>") ) {
+                in.close();
+                return true;
+            }
+        }
+        in.close();
+        return false;
     }
 }

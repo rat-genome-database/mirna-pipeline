@@ -2,12 +2,12 @@
 
 <beans>
     <bean id="manager" class="edu.mcw.rgd.miRnaManager">
-        <property name="version" value="miRna Import pipeline   -- build Apr 28, 2020" />
+        <property name="version" value="miRna Import pipeline   -- build Apr 29, 2020" />
         <property name="speciesProcessed">
             <list>
-                <value>rat</value>
-                <value>mouse</value>
                 <value>human</value>
+                <value>mouse</value>
+                <value>rat</value>
             </list>
         </property>
         <property name="mirbaseGenomeFile">
@@ -35,7 +35,7 @@
             </list>
         </property>
 
-        <property name="fdThreadCount" value="3" />
+        <property name="fdThreadCount" value="2" />
         <property name="ppThreadCount" value="22" />
         <property name="qcdbThreadCount" value="4" />
         <property name="qcThreadCount" value="18" />

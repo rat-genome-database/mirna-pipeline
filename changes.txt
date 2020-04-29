@@ -1,3 +1,6 @@
+Apr 29, 2020
+  -tuned up logic when downloading files with bad content
+
 Apr 28, 2020
   -updated ojdbc dependency
 
