@@ -6,7 +6,8 @@ import edu.mcw.rgd.datamodel.MiRnaTargetStat;
 import edu.mcw.rgd.datamodel.SpeciesType;
 import edu.mcw.rgd.process.Utils;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
@@ -19,7 +20,7 @@ public class miRnaStatLoader {
     private String version;
     private List<String> speciesProcessed;
 
-    Logger log = Logger.getLogger("stats");
+    Logger log = LogManager.getLogger("stats");
 
     public void run() throws Exception {
 

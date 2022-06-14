@@ -3,7 +3,8 @@ package edu.mcw.rgd;
 import edu.mcw.rgd.pipelines.PipelineRecord;
 import edu.mcw.rgd.pipelines.RecordProcessor;
 import edu.mcw.rgd.process.Utils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 
@@ -14,7 +15,7 @@ import java.io.File;
  */
 public class miRnaParser extends RecordProcessor {
 
-    Logger log = Logger.getLogger("core");
+    Logger log = LogManager.getLogger("status");
 
     int confirmedFilesWithParseError = 0;
     int predictedFilesWithParseError = 0;
@@ -29,7 +30,6 @@ public class miRnaParser extends RecordProcessor {
         try {
             run(rec);
         } catch(Exception e) {
-            e.printStackTrace();
             Utils.printStackTrace(e, log);
             log.error("ERROR: PP "+rec.getRecNo()+". "+rec.getIdMI());
             throw e;

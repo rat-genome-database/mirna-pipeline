@@ -4,7 +4,8 @@ import edu.mcw.rgd.datamodel.MiRnaTarget;
 import edu.mcw.rgd.pipelines.PipelineRecord;
 import edu.mcw.rgd.pipelines.RecordProcessor;
 import edu.mcw.rgd.process.Utils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class miRnaDataLoad extends RecordProcessor {
 
-    Logger log = Logger.getLogger("core");
+    Logger log = LogManager.getLogger("status");
 
     private miRnaDAO dao;
 
@@ -37,7 +38,6 @@ public class miRnaDataLoad extends RecordProcessor {
             if( !rec.getEntries().isEmpty() )
                 load(rec);
         } catch (Exception e) {
-            e.printStackTrace();
             Utils.printStackTrace(e, log);
             log.error("ERROR: LD "+rec.getRecNo()+". "+rec.getIdMI());
             throw e;

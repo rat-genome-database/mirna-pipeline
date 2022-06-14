@@ -4,7 +4,8 @@ import edu.mcw.rgd.datamodel.SpeciesType;
 import edu.mcw.rgd.pipelines.RecordPreprocessor;
 import edu.mcw.rgd.process.FileDownloader;
 import edu.mcw.rgd.process.Utils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -20,7 +21,7 @@ import java.util.zip.GZIPInputStream;
  */
 public class miRnaMirBaseParser extends RecordPreprocessor {
 
-    Logger log = Logger.getLogger("core");
+    Logger log = LogManager.getLogger("status");
 
     private String mirBaseGenomeFile;
     private int speciesTypeKey;
@@ -46,7 +47,6 @@ public class miRnaMirBaseParser extends RecordPreprocessor {
         try {
             run();
         } catch(Exception e) {
-            e.printStackTrace();
             Utils.printStackTrace(e, log);
             throw e;
         }

@@ -2,7 +2,7 @@
 
 <beans>
     <bean id="manager" class="edu.mcw.rgd.miRnaManager">
-        <property name="version" value="miRna Import pipeline   -- build Apr 29, 2020" />
+        <property name="version" value="miRna Import pipeline   -- build Jun 13, 2022" />
         <property name="speciesProcessed">
             <list>
                 <value>human</value>
@@ -13,9 +13,9 @@
         <property name="mirbaseGenomeFile">
             <list>
                 <value> </value>
-                <value>ftp://mirbase.org/pub/mirbase/CURRENT/genomes/hsa.gff3</value>
-                <value>ftp://mirbase.org/pub/mirbase/CURRENT/genomes/mmu.gff3</value>
-                <value>ftp://mirbase.org/pub/mirbase/CURRENT/genomes/rno.gff3</value>
+                <value>https://mirbase.org/ftp/CURRENT/genomes/hsa.gff3</value>
+                <value>https://mirbase.org/ftp/CURRENT/genomes/mmu.gff3</value>
+                <value>https://mirbase.org/ftp/CURRENT/genomes/rno.gff3</value>
             </list>
         </property>
         <property name="mirgateUriConfirmed">

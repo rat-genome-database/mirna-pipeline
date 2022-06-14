@@ -4,7 +4,8 @@ import edu.mcw.rgd.datamodel.MiRnaTarget;
 import edu.mcw.rgd.pipelines.PipelineRecord;
 import edu.mcw.rgd.pipelines.RecordProcessor;
 import edu.mcw.rgd.process.Utils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * @author mtutaj
@@ -14,7 +15,7 @@ import org.apache.log4j.Logger;
  */
 public class miRnaQC extends RecordProcessor {
 
-    Logger log = Logger.getLogger("core");
+    Logger log = LogManager.getLogger("status");
 
     @Override
     public void process(PipelineRecord pipelineRecord) throws Exception {
@@ -27,7 +28,6 @@ public class miRnaQC extends RecordProcessor {
             qc(rec);
             log.debug("  QC "+rec.getRecNo()+". "+rec.getIdMI()+" OK!");
         } catch (Exception e) {
-            e.printStackTrace();
             Utils.printStackTrace(e, log);
             log.error("ERROR: QC "+rec.getRecNo()+". "+rec.getIdMI());
             throw e;

@@ -1,3 +1,7 @@
+Jun 13, 2022
+  updated log4j to avoid zero day exploit
+  updated source url to mirbase.org
+
 Apr 29, 2020
   -tuned up logic when downloading files with bad content
 

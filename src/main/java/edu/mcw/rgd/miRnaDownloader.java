@@ -5,11 +5,11 @@ import edu.mcw.rgd.pipelines.PipelineRecord;
 import edu.mcw.rgd.pipelines.RecordProcessor;
 import edu.mcw.rgd.process.FileDownloader;
 import edu.mcw.rgd.process.Utils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
 
@@ -20,7 +20,7 @@ import java.util.*;
  */
 public class miRnaDownloader extends RecordProcessor {
 
-    Logger log = Logger.getLogger("core");
+    Logger log = LogManager.getLogger("status");
 
     private String uriConfirmed;
     private String uriPredicted;
@@ -61,7 +61,6 @@ public class miRnaDownloader extends RecordProcessor {
             run(rec);
             log.debug("  FD "+rec.getRecNo()+". "+rec.getIdMI()+" OK!");
         } catch(Exception e) {
-            e.printStackTrace();
             Utils.printStackTrace(e, log);
             log.error("ERROR: FD "+rec.getRecNo()+". "+rec.getIdMI());
             throw e;

@@ -3,7 +3,8 @@ package edu.mcw.rgd;
 import edu.mcw.rgd.pipelines.PipelineRecord;
 import edu.mcw.rgd.pipelines.RecordProcessor;
 import edu.mcw.rgd.process.Utils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * @author mtutaj
@@ -13,7 +14,7 @@ import org.apache.log4j.Logger;
  */
 public class miRnaQCDb extends RecordProcessor {
 
-    Logger log = Logger.getLogger("core");
+    Logger log = LogManager.getLogger("status");
 
     private int speciesTypeKey;
     private miRnaDAO dao;
@@ -45,7 +46,6 @@ public class miRnaQCDb extends RecordProcessor {
             qc(rec);
             log.debug("  QCDB "+rec.getRecNo()+". "+rec.getIdMI()+" OK!");
         } catch (Exception e) {
-            e.printStackTrace();
             Utils.printStackTrace(e, log);
             log.error("ERROR: QCDB "+rec.getRecNo()+". "+rec.getIdMI());
             throw e;
