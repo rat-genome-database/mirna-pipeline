@@ -75,7 +75,7 @@ public class miRnaDownloader extends RecordProcessor {
         downloader.setUseCompression(true);
         downloader.setMaxRetryCount(1);
         downloader.setDownloadRetryInterval(20); // 20s: retry download after 20s (default was 60s)
-        downloader.setSoTimeout(300000); // set SO_TIMEOUT to 300s (5 minutes) to wait for the data to be downloaded
+        downloader.setSoTimeout(600000); // set SO_TIMEOUT to 600s (10 minutes) to wait for the data to be downloaded
 
         // go over all MI ids and download predicted and validated gene associations for them
         downloader.setExternalFile(getUriConfirmed()+rec.getIdMI());
@@ -93,8 +93,7 @@ public class miRnaDownloader extends RecordProcessor {
         // in the file prefix, include the current year and quarter, and the species
         Date dt = new Date();
         int year = dt.getYear()+1900;
-        int quarter = 1 + dt.getMonth()/3;
-        String filePrefix = "data/"+year+"q"+quarter;
+        String filePrefix = "data/"+year;
         String species = SpeciesType.getCommonName(getSpeciesTypeKey()).toLowerCase();
         return filePrefix+"_"+species+"_";
     }

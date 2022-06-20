@@ -2,7 +2,7 @@
 
 <beans>
     <bean id="manager" class="edu.mcw.rgd.miRnaManager">
-        <property name="version" value="miRna Import pipeline   -- build Jun 13, 2022" />
+        <property name="version" value="miRna Import pipeline   -- build Jun 20, 2022" />
         <property name="speciesProcessed">
             <list>
                 <value>human</value>
@@ -42,7 +42,7 @@
         <property name="ldThreadCount" value="1" />
         <property name="queueSize" value="350" /><!-- 0: unlimited; set it to low number if little JVM memory, f.e. 50 -->
         <!-- nr of downloaded files that are broken and that should be reprocessed -->
-        <property name="maxFailedFiles" value="5000" />
+        <property name="maxFailedFiles" value="500" />
         <!-- percent of stale data that may be deleted; if stale data exceeds that threshold, nothing is deleted -->
         <property name="staleDataDeleteThreshold" value="10" />
     </bean>

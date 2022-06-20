@@ -1,3 +1,7 @@
+Jun 20, 2022
+  tuned up file download: doubled timeout period from 5 to 10 minutes;
+    changed naming scheme for downloaded files: one set per year
+
 Jun 13, 2022
   updated log4j to avoid zero day exploit
   updated source url to mirbase.org
