@@ -2,7 +2,7 @@
 
 <beans>
     <bean id="manager" class="edu.mcw.rgd.miRnaManager">
-        <property name="version" value="miRna Import pipeline   -- build Jun 20, 2022" />
+        <property name="version" value="miRna Import pipeline   -- build Jun 21, 2022" />
         <property name="speciesProcessed">
             <list>
                 <value>human</value>

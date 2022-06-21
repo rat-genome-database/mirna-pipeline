@@ -3,7 +3,6 @@ package edu.mcw.rgd;
 import edu.mcw.rgd.datamodel.MiRnaTarget;
 import edu.mcw.rgd.datamodel.SpeciesType;
 import edu.mcw.rgd.pipelines.PipelineManager;
-import edu.mcw.rgd.pipelines.PipelineSession;
 import edu.mcw.rgd.process.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,10 +10,7 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.core.io.FileSystemResource;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author jdepons
@@ -100,7 +96,9 @@ public class miRnaManager {
     public void run() throws Exception {
         log.info("miRna pipeline starting");
 
-        for( String species: getSpeciesProcessed() ) {
+        List<String> speciesList = getSpeciesProcessed();
+        Collections.shuffle(speciesList);
+        for( String species: speciesList ) {
             run(SpeciesType.parse(species));
         }
 
@@ -175,7 +173,7 @@ public class miRnaManager {
         deleteStaleData(speciesTypeKey, startDate);
 
         // dump counter statistics
-        dumpCounters(log, manager.getSession());
+        manager.dumpCounters(log);
         parser.printStats(log);
 
         int multisCount = dao.printMultis();
@@ -185,16 +183,6 @@ public class miRnaManager {
 
         log.info("OK! elapsed "+ Utils.formatElapsedTime(startTime, System.currentTimeMillis()));
         log.info("=====");
-    }
-
-    void dumpCounters(Logger log, PipelineSession session) {
-
-        for (String counter : session.getCounters()) {
-            int count = session.getCounterValue(counter);
-            if (count > 0) {
-                log.info(counter + ": " + count);
-            }
-        }
     }
 
     void deleteStaleData(int speciesTypeKey, Date startDate) throws Exception {
