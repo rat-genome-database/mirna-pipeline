@@ -1,3 +1,6 @@
+Jun 27, 2022
+  downloader: read http request timeout from properties file
+
 Jun 21, 2022
   upgrade from dbcp to dbcp2
 

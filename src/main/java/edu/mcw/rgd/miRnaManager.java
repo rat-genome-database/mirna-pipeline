@@ -34,6 +34,7 @@ public class miRnaManager {
     private List<String> speciesProcessed;
     private int maxFailedFiles;
     private int staleDataDeleteThreshold;
+    private int downloadSoTimeout;
 
     public static void main(String[] args) throws Exception {
 
@@ -132,6 +133,7 @@ public class miRnaManager {
         fileDownloader.setUriConfirmed(uriConfirmed);
         fileDownloader.setUriPredicted(uriPredicted);
         fileDownloader.setSpeciesTypeKey(speciesTypeKey);
+        fileDownloader.setDownloadSoTimeout(getDownloadSoTimeout());
 
         // setup the file parser
         miRnaParser parser = new miRnaParser();
@@ -306,6 +308,14 @@ public class miRnaManager {
 
     public int getStaleDataDeleteThreshold() {
         return staleDataDeleteThreshold;
+    }
+
+    public int getDownloadSoTimeout() {
+        return downloadSoTimeout;
+    }
+
+    public void setDownloadSoTimeout(int downloadSoTimeout) {
+        this.downloadSoTimeout = downloadSoTimeout;
     }
 }
 

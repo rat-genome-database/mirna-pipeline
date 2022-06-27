@@ -25,6 +25,7 @@ public class miRnaDownloader extends RecordProcessor {
     private String uriConfirmed;
     private String uriPredicted;
     private int speciesTypeKey;
+    private int downloadSoTimeout;
 
     public String getUriConfirmed() {
         return uriConfirmed;
@@ -48,6 +49,14 @@ public class miRnaDownloader extends RecordProcessor {
 
     public void setSpeciesTypeKey(int speciesTypeKey) {
         this.speciesTypeKey = speciesTypeKey;
+    }
+
+    public int getDownloadSoTimeout() {
+        return downloadSoTimeout;
+    }
+
+    public void setDownloadSoTimeout(int downloadSoTimeout) {
+        this.downloadSoTimeout = downloadSoTimeout;
     }
 
     @Override
@@ -75,7 +84,8 @@ public class miRnaDownloader extends RecordProcessor {
         downloader.setUseCompression(true);
         downloader.setMaxRetryCount(1);
         downloader.setDownloadRetryInterval(20); // 20s: retry download after 20s (default was 60s)
-        downloader.setSoTimeout(600000); // set SO_TIMEOUT to 600s (10 minutes) to wait for the data to be downloaded
+        //downloader.setSoTimeout(600000); // set SO_TIMEOUT to 600s (10 minutes) to wait for the data to be downloaded
+        downloader.setSoTimeout(getDownloadSoTimeout()); // set SO_TIMEOUT to 600s (10 minutes) to wait for the data to be downloaded
 
         // go over all MI ids and download predicted and validated gene associations for them
         downloader.setExternalFile(getUriConfirmed()+rec.getIdMI());
